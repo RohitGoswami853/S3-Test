@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create or update S3 buckets
+
+Resources:
+  InboundBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: inbound-bucket-nct
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+              
+  OutboundBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: outbound-bucket-nct
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+              
+  SCBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: sc-bucket-nct
+      VersioningConfiguration:
+        Status: Enabled
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+Outputs:
+  InboundBucketName:
+    Value: !Ref InboundBucket
+  OutboundBucketName:
+    Value: !Ref OutboundBucket
+  SCBucketName:
+    Value: !Ref SCBucket
