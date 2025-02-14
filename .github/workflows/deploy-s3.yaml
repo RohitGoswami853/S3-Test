@@ -30,3 +30,7 @@ jobs:
             --stack-name S3-Buckets-Stack \
             --template-file s3-bucket.yaml \
             --capabilities CAPABILITY_NAMED_IAM
+            
+      - name: Upload n.py to nct-sc-1234-us-east-1
+        run: |
+          aws s3 cp n.py s3://nct-sc-1234-us-east-1/
